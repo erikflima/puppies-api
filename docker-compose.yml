@@ -1,0 +1,22 @@
+services:
+#--------------------------------------------------------------------------------
+
+  # Servico do banco de dados PostgreSQL.
+  postgres:  									# Define um serviço chamado "postgres"
+    image: postgres:16  						# Usa a imagem do Docker do PostgreSQL versao 16
+    container_name: postgres-db  				# Nomeia o contêiner como "postgres-db"
+    restart: always  							# Configura o contêiner para reiniciar sempre que parar
+
+    env_file:
+      - .env  									# Carrega as variáveis de ambiente do arquivo .env
+
+    ports:
+      - "5432:5432"  							# Mapeia a porta 5432 do host para a porta 5432 do contêiner
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Monta um volume para persistir os dados do PostgreSQL
+
+volumes:
+  postgres_data:  								# Define um volume chamado "postgres_data" para persistência de dados
+  
+#-------------------------------------------------------------------------------- 
