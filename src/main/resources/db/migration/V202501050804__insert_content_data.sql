@@ -1,8 +1,9 @@
--- Inserir users de exemplo
+-- Inserir usuarios de exemplo
 INSERT INTO users (name, email, password)
 VALUES
   ('Alice', 'alice@example.com', '$2a$10$VgF7zLlrMv.9Zg5B5Bg5bOV4SE3MDWdJlZ4tPrUnUTcFuJILcWUpO'), -- Senha: password1
-  ('Bob', 'bob@example.com', '$2a$10$M1DeUGzVXKqB0hqRS3F7Q.yhHTNGYV4AW.yAjU4u5XWg2.Cgpfn/K');   -- Senha: password2
+  ('Bob', 'bob@example.com', '$2a$10$M1DeUGzVXKqB0hqRS3F7Q.yhHTNGYV4AW.yAjU4u5XWg2.Cgpfn/K'),   -- Senha: password2
+  ('Erik', 'erik@example.com', '$2a$10$M1DeUGzVXKqB0hqRS3F7Q.yhHTNGYV4AW.yAjU4u5XWg2.Cgpfn/K');   -- Senha: password2
 
 -- Inserir posts de exemplo
 INSERT INTO posts (content, image_url, created_at, author_id)
