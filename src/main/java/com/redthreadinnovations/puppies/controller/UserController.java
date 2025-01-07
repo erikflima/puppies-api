@@ -7,18 +7,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Optional;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-
+/**
+ * Controller for managing user-related operations.
+ * Provides endpoints for creating users and retrieving user profiles.
+ */
 @RestController
 @RequestMapping("/users")
 public class UserController {
-
-    private static final Logger logger = LoggerFactory.getLogger( UserController.class );   
     
     @Autowired
     private UserService userService;
@@ -30,6 +28,12 @@ public class UserController {
     //-------------------------------------------//
     
 
+    /**
+     * Creates a new user.
+     *
+     * @param userDTO the data transfer object containing user details
+     * @return the created user
+     */
     @PostMapping("/create") 
     public ResponseEntity<User> createUser( @Validated @RequestBody UserDTO userDTO ) {
     	
@@ -43,7 +47,13 @@ public class UserController {
         return ResponseEntity.ok(createdUser);
     }
 
-
+    
+    /**
+     * Retrieves a user profile by its ID.
+     *
+     * @param userId the ID of the user to retrieve
+     * @return the user with the specified ID, or 404 if not found
+     */
     @GetMapping("/getbyid/{userId}")
     public ResponseEntity<User> getUserProfileById( @PathVariable Long userId ) {
     	
@@ -58,6 +68,5 @@ public class UserController {
             return ResponseEntity.notFound().build();
         }
     }
-
 
 }

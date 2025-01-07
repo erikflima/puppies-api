@@ -3,6 +3,9 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 
+/**
+ * Represents a post in the application.
+ */
 @Entity
 @Table(name = "posts")
 public class Post {
@@ -24,60 +27,73 @@ public class Post {
     @JoinColumn(name = "author_id", nullable = false)
     private User author;
 
-	//-------------------------------------------//
+ //-------------------------------------------//
 
-	public Post() {
-	}
-
-	public Post( Long id, String content, String imageUrl, LocalDateTime createdAt, User author ) {
-		
-		this.id = id;
-		this.content = content;
-		this.imageUrl = imageUrl;
-		this.createdAt = createdAt;
-		this.author = author;
-	}
-
-	//-------------------------------------------//
+	 public Post() {
+	 }
 	
-	public Long getId() {
-		return id;
-	}
+	 /**
+	  * Parameterized constructor.
+	  *
+	  * @param id the post ID
+	  * @param content the content of the post
+	  * @param imageUrl the URL of the image associated with the post
+	  * @param createdAt the date and time when the post was created
+	  * @param author the author of the post
+	  */
+	 public Post( Long id, String content, String imageUrl, LocalDateTime createdAt, User author ) {
+	  this.id = id;
+	  this.content = content;
+	  this.imageUrl = imageUrl;
+	  this.createdAt = createdAt;
+	  this.author = author;
+	 }
+	
+	 //-------------------------------------------//
+	
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+	 public Long getId() {
+	  return id;
+	 }
 
-	public String getContent() {
-		return content;
-	}
+	 public void setId(Long id) {
+	  this.id = id;
+	 }
+	
 
-	public void setContent(String content) {
-		this.content = content;
-	}
+	 public String getContent() {
+	  return content;
+	 }
+	
+	 public void setContent(String content) {
+	  this.content = content;
+	 }
+	
 
-	public String getImageUrl() {
-		return imageUrl;
-	}
+	 public String getImageUrl() {
+	  return imageUrl;
+	 }
 
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
-	}
+	 public void setImageUrl(String imageUrl) {
+	  this.imageUrl = imageUrl;
+	 }
+	
 
-	public LocalDateTime getCreatedAt() {
-		return createdAt;
-	}
+	 public LocalDateTime getCreatedAt() {
+	  return createdAt;
+	 }
 
-	public void setCreatedAt(LocalDateTime createdAt) {
-		this.createdAt = createdAt;
-	}
+	 public void setCreatedAt(LocalDateTime createdAt) {
+	  this.createdAt = createdAt;
+	 }
+	
 
-	public User getAuthor() {
-		return author;
-	}
-
-	public void setAuthor(User author) {
-		this.author = author;
-	}
+	 public User getAuthor() {
+	  return author;
+	 }
+	
+	 public void setAuthor(User author) {
+	  this.author = author;
+	 }
 
 }

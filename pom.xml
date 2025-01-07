@@ -75,7 +75,7 @@
             <version>${springdoc.version}</version>
         </dependency>
 
- 		<!-- Para utilizacao da classe "WebClient" para realizar requisicoes http. -->
+ 		<!-- To use the "WebClient" class to make http requests. -->
 		<dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-webflux</artifactId>
@@ -87,8 +87,6 @@
             <version>${postgresql.version}</version>
         </dependency>
 
-
-        <!-- Dependencia do Spring Security para criptografia de senha. -->
 		<dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-security</artifactId>
@@ -152,12 +150,11 @@
     </dependencies>
 
 
-    <!-- Gerenciamento centralizado de versoes das dependencias. -->
     <dependencyManagement>
     
         <dependencies>
         
-        	<!-- Importa dependencias do Spring Cloud para gerenciar versao e escopo. -->
+        	<!-- Import Spring Cloud dependencies to manage versions and scope. -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -177,16 +174,16 @@
         
         <plugins>
         
-            <!-- Plugin para empacotar e executar aplicações Spring Boot. -->
+            <!-- Plugin for packaging and running Spring Boot applications. -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.neogrid.drpsaas.DrpSaasBackendApplication</mainClass>
+                    <mainClass>com.redthreadinnovations.puppies.PuppiesApiApplication</mainClass>
                 </configuration>
             </plugin>
 
-			<!-- Plugin Jib para empacotamento de containers Docker sem Dockerfile. -->
+			<!-- Jib plugin for packaging Docker containers without a Dockerfile. -->
             <plugin>
                 <groupId>com.google.cloud.tools</groupId>
                 <artifactId>jib-maven-plugin</artifactId>
@@ -213,7 +210,7 @@
                 
             </plugin>
             
-            <!-- Plugin Surefire para execucao de testes unitarios. -->
+            <!-- Surefire plugin for running unit tests. -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -221,7 +218,7 @@
             </plugin>
 
 
-        <!-- Plugin Maven Resources para garantir a codificacao correta dos arquivos de recursos em UTF-8. -->
+        	<!-- Maven Resources plugin to ensure correct encoding of resource files in UTF-8. -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>

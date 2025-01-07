@@ -1,8 +1,6 @@
 package com.redthreadinnovations.puppies.service;
 import com.redthreadinnovations.puppies.entity.User;
 import com.redthreadinnovations.puppies.repository.UserRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -12,8 +10,6 @@ import java.util.Optional;
 
 @Service
 public class UserService {
-
-    private static final Logger logger = LoggerFactory.getLogger( UserService.class );
     
     @Autowired
     private UserRepository userRepository;

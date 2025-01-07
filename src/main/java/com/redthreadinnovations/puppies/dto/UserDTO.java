@@ -4,6 +4,10 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 
+/**
+ * Data Transfer Object for User entity.
+ * Used to transfer user data between processes.
+ */
 public class UserDTO {
 
     @NotBlank(message = "Name is mandatory")
@@ -19,20 +23,28 @@ public class UserDTO {
     @Size(min = 8, message = "Password must be at least 8 characters")
     private String password;
 
-    
-	//-------------------------------------------//
+
+    //-------------------------------------------//
+
 
     public UserDTO() {
     }
 
+    /**
+     * Parameterized constructor.
+     *
+     * @param name the user's name
+     * @param email the user's email
+     * @param password the user's password
+     */
     public UserDTO(String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.password = password;
     }
 
-	//-------------------------------------------//
-    
+    //-------------------------------------------//
+
     public String getName() {
         return name;
     }

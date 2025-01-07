@@ -13,7 +13,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
+/**
+ * Controller for managing post-related operations.
+ * Provides endpoints for creating posts, retrieving posts by ID, and fetching user and general feeds.
+ */
 @RestController
 @RequestMapping("/posts")
 public class PostController {
@@ -25,7 +28,14 @@ public class PostController {
     private UserService userService;
 
     //-------------------------------------------//
-    
+ 
+
+    /**
+     * Creates a new post.
+     *
+     * @param postDTO the data transfer object containing post details
+     * @return the created post
+     */    
     @PostMapping("/create")
     public ResponseEntity<Post> createPost( @RequestBody PostDTO postDTO ) {
     	
@@ -42,7 +52,13 @@ public class PostController {
         return ResponseEntity.ok( createdPost );
     }
 
-
+    
+    /**
+     * Retrieves a post by its ID.
+     *
+     * @param postId the ID of the post to retrieve
+     * @return the post with the specified ID, or 404 if not found
+     */
     @GetMapping("/getbyid/{postId}")
     public ResponseEntity<Post> getPostById( @PathVariable Long postId ) {
     	
@@ -59,6 +75,12 @@ public class PostController {
     }      
 
 
+    /**
+     * Retrieves the feed of posts by a specific user.
+     *
+     * @param userId the ID of the user whose feed to retrieve
+     * @return the list of posts by the specified user
+     */    
     @GetMapping("/feedbyuser/{userId}")
     public ResponseEntity< List<Post> > getUserFeed( @PathVariable Long userId ) {
     	
@@ -71,6 +93,13 @@ public class PostController {
     }
 
 
+    /**
+     * Retrieves the general feed of posts.
+     *
+     * @param page the page number to retrieve
+     * @param size the number of posts per page
+     * @return the paginated list of posts
+     */
     @GetMapping("/feed")
     public ResponseEntity< Page<Post> > getFeed( @RequestParam(defaultValue = "0" ) int page,
                                                  @RequestParam(defaultValue = "10") int size ) {

@@ -15,7 +15,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
+/**
+ * Controller for managing like-related operations.
+ * Provides endpoints for liking posts and retrieving liked posts by user.
+ */
 @RestController
 @RequestMapping("/likes")
 public class LikeController {
@@ -31,6 +34,13 @@ public class LikeController {
 
     //-------------------------------------------//
     
+    
+    /**
+    * Likes a post.
+    *
+    * @param likeDTO the data transfer object containing like details
+    * @return the created like or the existing like if already liked
+    */    
     @PostMapping("/likeapost")
     public ResponseEntity<Like> likeAPost( @RequestBody LikeDTO likeDTO ) {
     	
@@ -40,16 +50,16 @@ public class LikeController {
         Post post = postService.findById(likeDTO.getPostId())
                                .orElseThrow(() -> new RuntimeException("Post not found"));
 
-        // Verifica se o usuario ja curtiu a publicacao.
+        // Checks if the user has already liked the post.
         Optional<Like> existingLike = likeService.findByUserAndPost( user, post );
         
         if ( existingLike.isPresent() ) {
         	
-        	// Se a curtida ja existir, retorna a curtida existente.
+        	// If the like already exists, returns the existing like.
             return ResponseEntity.ok( existingLike.get() );
         }
 
-        // Cria uma nova curtida se nao existir uma anterior.
+        // Creates a new like if there is no previous one.
         Like like = new Like();
         like.setUser(user);
         like.setPost(post);
@@ -60,6 +70,12 @@ public class LikeController {
     }
 
 
+    /**
+     * Retrieves the posts liked by a specific user.
+     *
+     * @param userId the ID of the user whose liked posts to retrieve
+     * @return the list of posts liked by the specified user
+     */
     @GetMapping("/likedpostsbyuser/{userId}")
     public ResponseEntity< List<Post> > getLikedPostsByUserId( @PathVariable Long userId ) {
 
@@ -76,4 +92,3 @@ public class LikeController {
     }  
     
 }
-

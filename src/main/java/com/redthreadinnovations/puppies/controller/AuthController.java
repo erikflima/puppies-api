@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 
+/**
+* Controller for handling authentication-related operations.
+* Provides endpoints for user login.
+*/
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
@@ -15,6 +19,13 @@ public class AuthController {
     @Autowired
     private UserService userService;
 
+
+    /**
+     * Authenticates a user based on provided login credentials.
+     *
+     * @param loginDTO the data transfer object containing login details
+     * @return a response entity with a success message if credentials are valid, or an error message if invalid
+     */    
     @PostMapping("/login")
     public ResponseEntity<String> login( @RequestBody LoginDTO loginDTO ) {
     	

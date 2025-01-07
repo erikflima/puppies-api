@@ -25,7 +25,7 @@ public class SecurityConfig {
     @Bean
     public UserDetailsService userDetailsService() {
     	
-    	//Criando um usuario em memoria, no qual pode acessar os endpoints
+    	//Creating a user in memory, which can access the endpoints.
         UserDetails user = User.withUsername("admin_puppies_app")
 					           .password( passwordEncoder().encode("IjyWSjHxAGiBCZ2pXAsxIgzLHQozp92lSX6pid0aqrPwN6GpEH") )
 					           .roles("USER")
@@ -38,9 +38,10 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain( HttpSecurity http ) throws Exception {
 
-        http.csrf(csrf -> csrf.disable() ) // Desabilita o CSRF.
+        http.csrf(csrf -> csrf.disable() ) //Disables CSRF.
 					          .authorizeHttpRequests(auth -> auth
-					          .anyRequest().authenticated() // Requer autenticacao para todas as requisicoes.
+					          .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll() // Allow access to Swagger endpoints without authentication.
+					          .anyRequest().authenticated() //Require authentication for all requests.
             )
 					          
             .httpBasic( Customizer.withDefaults() );
